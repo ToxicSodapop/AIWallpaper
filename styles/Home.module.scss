@@ -1,0 +1,161 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#header {
+  height: 100vh;
+  @include flex-center;
+  padding-left: 7vw;
+  padding-right: 40vw;
+  
+  @media (max-width: 600px) {
+    padding-right: 7vw;
+  }
+
+  h1 {
+    font-size: 5rem;
+    margin: 0;
+    position: relative;
+
+    @media (max-width: 600px) {
+      font-size: 4rem;
+    }
+    @media (max-width: 425px) {
+      font-size: 3.3rem;
+    }
+
+    &:before {
+      content: "";
+      width: 1px;
+      height: calc(120vh - 10vw);
+      background: rgba(0,0,0,0.8);
+      position: absolute;
+      left: -3vw;
+      top: 0.2em;
+    }
+  }
+  h2 {
+    position: absolute;
+    left: 0;
+    margin: 2rem 0 2rem 0;
+    font-size: 19vw;
+    z-index: 2;
+    width: 150%;
+    font-family: utopia-std, serif;
+    font-weight: 600;
+    opacity: 0.3;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+  p {
+    font-size: 1.6rem;
+    margin: 0;
+    max-width: 40rem;
+  }
+  a {
+    width: fit-content;
+  }
+
+  #down {
+    margin-top: 0.5rem;
+  }
+  
+  *:not(#backgroundImg, h2) {
+    z-index: 3;
+  }
+  #backgroundImg {
+    position: absolute;
+    bottom: 9vh;
+    left: 25vw;
+    opacity: 0.4;
+    height: 75vh;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+#main {
+  @include flex-center;
+  padding: 6rem 7vw;
+  background: #F3F3F3;
+
+  h2 {
+    font-size: 4.5rem;
+    position: relative;
+    margin: 0 0 5rem 0;
+
+    @media (max-width: 430px) {
+      font-size: 4rem;
+    }
+
+    &:after {
+      content: "";
+      width: 100vw;
+      height: 1px;
+      background: black;
+      position: absolute;
+      left: -7vw;
+      bottom: -1rem;
+    }
+  }
+  #images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3rem;
+
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+    }
+
+    article {
+      @inclde flex-center;
+      position: relative;
+      border: 1px solid black;
+      
+      img {
+        max-width: 100%;
+      }
+      .imgDownload {
+        background: black;
+        border-radius: 100%;
+        transition: 0.3s ease-in-out;
+        opacity: 0;
+
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        
+        &:hover {
+          background: transparent;
+          filter: brightness(0);
+        }
+      }
+      &:hover .imgDownload {
+        opacity: 1;
+      }
+      div {
+        padding: 1rem 2rem;
+
+        h3 {
+          font-size: 1.7rem;
+          margin: 0;
+        }
+        h4 {
+          margin: 0.5rem 0 0 0;
+          font-size: 1.2rem;
+          opacity: 0.9;
+        }
+        p {
+          font-size: 1.2rem;
+          margin: 0.8rem 0 0 0;
+        }
+      }
+    }
+  }
+}
